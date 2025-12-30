@@ -27,7 +27,12 @@ Aplikasi Mushaf Al-Qur'an Digital interaktif yang dibangun dengan React, Vite, d
 - [Lucide React](https://lucide.dev/) (Ikon)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-## 💻 Cara Menjalankan Secara Lokal
+## 📚 Sumber Data
+
+Data Al-Qur'an dalam aplikasi ini diambil dari:
+- **[Al Quran Cloud API](https://alquran.cloud/api)**: Menyediakan teks ayat, informasi surah, dan metadata Mushaf.
+
+## � Cara Menjalankan Secara Lokal
 
 **Prasyarat:** Node.js (versi terbaru direkomendasikan)
 
