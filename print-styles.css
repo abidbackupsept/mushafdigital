@@ -1,0 +1,78 @@
+@page {
+  size: A4;
+  margin: 1cm; /* Beri sedikit margin agar tidak terlalu mepet ke tepi kertas */
+}
+
+@media print {
+  /* Sembunyikan elemen yang tidak seharusnya dicetak */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Atur ulang gaya pada body untuk pencetakan yang bersih */
+  body, html {
+    background-color: #fff !important;
+    color: #000 !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Atur ulang layout utama aplikasi */
+  #root {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Target MushafView dan kontainer halamannya */
+  .mushaf-view-container {
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  #mushaf-page {
+    background-color: #fff !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+    border: none !important; /* Hapus border saat mencetak */
+    margin: 0 !important;
+    padding: 1rem !important; /* Beri sedikit padding agar tidak mepet */
+    width: 100%;
+    height: auto;
+  }
+
+  .quran-text {
+    flex-grow: 1;
+    break-inside: auto;
+  }
+
+  .quran-text > span {
+    break-inside: avoid-page;
+  }
+
+  /* Sembunyikan semua elemen dekoratif dan ornamen saat mencetak menggunakan ID */
+  #ornament-top-left,
+  #ornament-top-right,
+  #ornament-bottom-left,
+  #ornament-bottom-right,
+  #ornament-side-left,
+  #ornament-side-right,
+  #mushaf-page > .absolute.inset-2, /* Target border dalam */
+  #mushaf-page > .absolute.inset-0  /* Target border luar */
+  {
+    display: none !important;
+  }
+
+
+  /* Sembunyikan bilah gulir saat mencetak */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

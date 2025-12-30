@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mushaf Al-Qur'an Digital</title>
+  
+  <!-- PWA & Mobile Meta Tags -->
+  <meta name="theme-color" content="#059669">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mushaf Digital">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4d6.svg">
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4d6.svg">
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face {
+      font-family: 'SurahHeader';
+      src: url('https://static-cdn.tarteel.ai/qul/fonts/common/quran-common.woff2') format('woff2');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SurahNames';
+      src: url('https://static-cdn.tarteel.ai/qul/fonts/surah-names/v2/surah-name-v2.ttf') format('truetype');
+      font-display: swap;
+    }
+    @font-face {
+        font-family: 'Uthmanic';
+        src: url('https://static-cdn.tarteel.ai/qul/fonts/UthmanicHafs_V22.ttf') format('truetype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Hanafi';
+        src: url('https://static-cdn.tarteel.ai/qul/fonts/nastaleeq/Hanafi/normal-v4.2.2/with-waqf-lazmi/font.ttf') format('truetype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Nastaleeq';
+        src: url('https://static-cdn.tarteel.ai/qul/fonts/nastaleeq/KFGQPCNastaleeq-Regular.ttf') format('truetype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'QuranV2';
+        src: url('https://static-cdn.tarteel.ai/qul/fonts/quran_fonts/v2/ttf.ttf') format('truetype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'MeQuran';
+        src: url('https://static-cdn.tarteel.ai/qul/fonts/me_quran_volt_newmet.ttf') format('truetype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'KhattV2';
+        src: url('https://static-cdn.tarteel.ai/qul/fonts/dk/DigitalKhattV2.otf') format('opentype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'KhattV1';
+        src: url('https://static-cdn.tarteel.ai/qul/fonts/dk/DigitalKhattQuranicV1.otf') format('opentype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Indopak';
+        src: url('https://db.onlinWebFonts.com/t/eb289d26afbfd6114ddfdc053113218e.ttf') format('truetype');
+        font-display: swap;
+    }
+
+    body {
+      background-color: #f8fafc;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .quran-text {
+      direction: rtl;
+      text-align: justify;
+      text-align-last: center;
+      line-height: 2.2;
+    }
+
+    /* Decorative Surah Header font style */
+    .font-surah-header {
+      font-family: 'SurahHeader', serif;
+    }
+
+    /* Surah Name Icon font style */
+    .font-surah-name {
+      font-family: 'SurahNames', serif;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+        -webkit-print-color-adjust: exact;
+      }
+      header, footer, .settings-overlay, button, .no-print {
+        display: none !important;
+      }
+      main {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+      }
+      #mushaf-page {
+        box-shadow: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 2rem !important;
+        margin: 0 !important;
+        position: static !important;
+        visibility: visible !important;
+        page-break-after: always;
+      }
+      .quran-text {
+        color: inherit !important;
+      }
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "html-to-image": "https://esm.sh/html-to-image@^1.11.11",
+    "framer-motion": "https://esm.sh/framer-motion@^11.0.8"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
+    }
+  </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
