@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Firebase
+.firebase/
+.firebaserc
+
+# Environment variables
+.env
+.env.*
+
+# Build and archive files
+*.zip
